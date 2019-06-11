@@ -1,0 +1,23 @@
+$detailColor: #336644;;
+.containerWrapper{
+}
+.fetchButton{
+    margin: 20px;
+    border: none;
+    font-size: 18px;
+    padding: 10px;
+    width: 150px;
+    background-color: transparent;
+    border: 2px solid $detailColor;
+    color: $detailColor;
+}
+table{
+   margin-left: 10%;
+    width: 80%;
+    text-align: center;
+
+    tr:nth-child(odd){
+        background-color: #596C56;
+        color: #fff;
+    }
+}
