@@ -9,10 +9,10 @@ export const FETCH_DATA_BY_ID_FAIL = "FETCH_DATA_BY_ID_FAIL";
 export function fetch_data() {
   return dispatch => {
     dispatch({ type: FETCH_DATA });
-    fetch(`https://cdv-weather-station.azurewebsites.net/api/`, {
+    fetch(`https://cdv-iot-cloud.azurewebsites.net/api/`, {
       headers: {
         "x-functions-key":
-          "hMuOsd2noNwCiaIyqTn6KKZw3BQE4jCzSTAaVfYgUKfDb49eaeRC7w=="
+          "/Ukhl5arUOXFvettOHX4W0EUdNW15aHR/xkysjSOECMCEITuVDUeKA=="
       }
     })
       .then(response => {
@@ -30,10 +30,10 @@ export function fetch_data() {
 export function fetch_data_by_id(id) {
   return dispatch => {
     dispatch({ type: FETCH_DATA_BY_ID });
-    fetch(`https://cdv-weather-station.azurewebsites.net/api/${id}`, {
+    fetch(`https://cdv-iot-cloud.azurewebsites.net/api/${id}`, {
       headers: {
         "x-functions-key":
-          "hMuOsd2noNwCiaIyqTn6KKZw3BQE4jCzSTAaVfYgUKfDb49eaeRC7w=="
+          "/Ukhl5arUOXFvettOHX4W0EUdNW15aHR/xkysjSOECMCEITuVDUeKA=="
       }
     })
       .then(res => {

@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { fetch_data } from "../../actions";
+import './style.scss';
+
 
 class Bodies extends PureComponent {
   render() {
@@ -12,9 +14,35 @@ class Bodies extends PureComponent {
       <React.Fragment>
         <div className="containerWrapper">
           <h2>WEATHER API</h2>
-          <button onClick={fetch_data}>TEST</button>
+          <button className="fetchButton" onClick={fetch_data}>POBIERZ WYNIKI</button>
+      
+        <table>
+          <tr>
+            <td>ID</td>
+            <td>GODZINA <br/> POMIARU</td>
+            <td>TEMPERATURA</td>
+            <td>WILGOTNOŚĆ<br/> POWIETRZA</td>
+            <td>CZUJNIK <br/> RUCHU </td>
+          </tr>
+          <tr>
+            <td>
+            {entries ? entries.map(element => <p>{element.ID}</p>) : <p>{error}</p>}
+            </td>
+            <td>
+            {entries ? entries.map(element => <p>{element.measurement_time.split("T")[1].slice(0,8)}</p>) : <p>{error}</p>}
+            </td>
+            <td>
+            {entries ? entries.map(element => <p>{element.temperature} &#8451;</p>) : <p>{error}</p>}
+            </td>
+            <td>
+            {entries ? entries.map(element => <p>{element.air_humidity}%</p>) : <p>{error}</p>}
+            </td>
+            <td>
+
+            </td>
+          </tr>
+        </table>
         </div>
-        {entries ? entries.map(element => <p>{element.ID}</p>) : <p>{error}</p>}
       </React.Fragment>
     );
   }
