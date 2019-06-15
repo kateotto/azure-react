@@ -17,6 +17,7 @@ class Bodies extends PureComponent {
           <button className="fetchButton" onClick={fetch_data}>POBIERZ WYNIKI</button>
       
         <table>
+          <tbody>
           <tr>
             <td>ID</td>
             <td>GODZINA <br/> POMIARU</td>
@@ -38,9 +39,9 @@ class Bodies extends PureComponent {
             {entries ? entries.map(element => <p>{element.air_humidity}%</p>) : <p>{error}</p>}
             </td>
             <td>
-
             </td>
           </tr>
+          </tbody>
         </table>
         </div>
       </React.Fragment>
