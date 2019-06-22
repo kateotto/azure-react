@@ -2,8 +2,35 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { fetch_data } from "../../actions";
 import "bootstrap/dist/css/bootstrap.css";
+import { Temperature, Humidity } from 'react-environment-chart';
 import "./style.scss";
 
+
+const Temp = (props) => {
+  const data = {
+
+    time: this.props.entries
+  }
+  this.setState({
+    time: this.props.entries.map(element => element.temperature)
+  });
+  return (
+    <Temperature data={data} />
+  )
+}
+
+const Hum = (props) => {
+  const data = {
+
+    time: this.props.entries
+  }
+  this.setState({
+    time: this.props.entries.map(element => element.air_humidity)
+  });
+  return (
+    <Humidity data={data} />
+  )
+}
 class Bodies extends PureComponent {
   render() {
     const { fetch_data, entries, loading, error } = this.props;
@@ -45,8 +72,8 @@ class Bodies extends PureComponent {
                   {entries ? (
                     entries.map(element => <p>{element.ID}</p>)
                   ) : (
-                    <p>{error}</p>
-                  )}
+                      <p>{error}</p>
+                    )}
                 </td>
                 <td>
                   {entries ? (
@@ -56,27 +83,31 @@ class Bodies extends PureComponent {
                       </p>
                     ))
                   ) : (
-                    <p>{error}</p>
-                  )}
+                      <p>{error}</p>
+                    )}
                 </td>
                 <td>
                   {entries ? (
                     entries.map(element => <p>{element.temperature} &#8451;</p>)
                   ) : (
-                    <p>{error}</p>
-                  )}
+                      <p>{error}</p>
+                    )}
                 </td>
                 <td>
                   {entries ? (
                     entries.map(element => <p>{element.air_humidity}%</p>)
                   ) : (
-                    <p>{error}</p>
-                  )}
+                      <p>{error}</p>
+                    )}
                 </td>
                 <td />
               </tr>
             </thead>
           </table>
+          <div className="charts">
+            <Temperature />
+            <Humidity />
+          </div>
         </div>
       </React.Fragment>
     );
