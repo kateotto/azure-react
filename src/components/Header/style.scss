@@ -3,3 +3,18 @@ $detail: #336644;
 h1 {
   color: $detail;
 }
+ul{
+  display: flex;
+  justify-content: space-around;
+}
+li{
+  color: black;
+  display: inline-block;
+  list-style-type: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+li:hover{
+  cursor: pointer;
+  color: $detail;
+}
