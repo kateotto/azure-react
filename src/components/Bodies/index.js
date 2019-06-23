@@ -3,11 +3,13 @@ import { connect } from "react-redux";
 import { fetch_data } from "../../actions";
 import "bootstrap/dist/css/bootstrap.css";
 import "./style.scss";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class Bodies extends PureComponent {
   render() {
     const { fetch_data, entries, loading, error } = this.props;
     if (loading) {
+      console.log("Entry: " + entries);
       return "Loading...";
     }
     return (
@@ -85,11 +87,21 @@ class Bodies extends PureComponent {
                
                 <td className="table-field">
                   {entries ? (
-                    entries.map(element => <p><button className="more-btn">WIĘCEJ</button></p>)
-                  ) : (
+                    entries.map(element => 
+                    <Link to={{
+                      pathname: `/addtitional/${element.ID}`,
+                      state: {entries: element}
+                    }}>
+                    <p>
+                      <button className="more-btn">WIĘCEJ</button>
+                    </p>
+                    </Link>
+                    )
+                 ) : (
                     <p>{error}</p>
                   )}
                 </td>
+             
               </tr>
             </thead>
           </table>
@@ -98,6 +110,8 @@ class Bodies extends PureComponent {
     );
   }
 }
+
+
 
 const mapStateToProps = state => {
   return {
