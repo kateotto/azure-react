@@ -79,8 +79,8 @@ class Bodies extends PureComponent {
             </thead>
           </table>
           <div className="charts">
-            <Temperature value={entries ? (entries.map(element => element.temperature.length - 1)) : "null"} />
-            <Humidity value={entries ? (entries.map(element => element.air_humidity.length - 1)) : "null"} />
+            <Temperature value={entries ? (entries.slice(-1)[0].temperature) : "null"} />
+            <Humidity value={entries ? (entries.slice(-1)[0].air_humidity) : "null"} />
           </div>
         </div>
       </React.Fragment>
