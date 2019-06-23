@@ -5,32 +5,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Temperature, Humidity } from 'react-environment-chart';
 import "./style.scss";
 
-
-const Temp = (props) => {
-  const data = {
-
-    time: this.props.entries
-  }
-  this.setState({
-    time: this.props.entries.map(element => element.temperature)
-  });
-  return (
-    <Temperature data={data} />
-  )
-}
-
-const Hum = (props) => {
-  const data = {
-
-    time: this.props.entries
-  }
-  this.setState({
-    time: this.props.entries.map(element => element.air_humidity)
-  });
-  return (
-    <Humidity data={data} />
-  )
-}
 class Bodies extends PureComponent {
   render() {
     const { fetch_data, entries, loading, error } = this.props;
@@ -105,8 +79,8 @@ class Bodies extends PureComponent {
             </thead>
           </table>
           <div className="charts">
-            <Temperature />
-            <Humidity />
+            <Temperature value={entries ? (entries.map(element => element.temperature.length - 1)) : "null"} />
+            <Humidity value={entries ? (entries.map(element => element.air_humidity.length - 1)) : "null"} />
           </div>
         </div>
       </React.Fragment>
