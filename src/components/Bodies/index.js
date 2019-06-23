@@ -35,20 +35,21 @@ class Bodies extends PureComponent {
                   <br /> POWIETRZA
                 </td>
                 <td>
-                  CZUJNIK <br /> RUCHU{" "}
+                 WILGOTNOŚĆ <br /> GLEBY
                 </td>
+                <td>WIĘCEJ</td>
               </tr>
             </thead>
             <thead>
               <tr>
-                <td>
+                <td className="table-field">
                   {entries ? (
                     entries.map(element => <p>{element.ID}</p>)
                   ) : (
                     <p>{error}</p>
                   )}
                 </td>
-                <td>
+                <td className="table-field">
                   {entries ? (
                     entries.map(element => (
                       <p>
@@ -59,21 +60,36 @@ class Bodies extends PureComponent {
                     <p>{error}</p>
                   )}
                 </td>
-                <td>
+                <td className="table-field">
                   {entries ? (
                     entries.map(element => <p>{element.temperature} &#8451;</p>)
                   ) : (
                     <p>{error}</p>
                   )}
                 </td>
-                <td>
+                <td className="table-field">
                   {entries ? (
                     entries.map(element => <p>{element.air_humidity}%</p>)
                   ) : (
                     <p>{error}</p>
                   )}
                 </td>
-                <td />
+                <td className="table-field">
+                   {entries ? (
+                    entries.map(element => <p>{element.soil_moisture}%</p>)
+                  ) : (
+                    <p>{error}</p>
+                  )}
+                </td>
+               
+               
+                <td className="table-field">
+                  {entries ? (
+                    entries.map(element => <p><button className="more-btn">WIĘCEJ</button></p>)
+                  ) : (
+                    <p>{error}</p>
+                  )}
+                </td>
               </tr>
             </thead>
           </table>
