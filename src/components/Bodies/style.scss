@@ -5,11 +5,20 @@ $detailColor: #336644;
   margin: 30px;
   padding: 10px 30px;
   font-size: 18px;
+  color: #fff;
 }
 .table-header {
   color: $detailColor;
   font-size: 18px;
   font-weight: 600;
+}
+.more-btn{
+  background: none;
+  outline: transparent;
+
+}
+.table-field{
+  height: 200px;
 }
 
 .temperature {
