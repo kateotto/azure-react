@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { fetch_data } from "../../actions";
 import "bootstrap/dist/css/bootstrap.css";
+import { Temperature, Humidity } from 'react-environment-chart';
 import "./style.scss";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -52,8 +53,8 @@ class Bodies extends PureComponent {
                   {entries ? (
                     entries.map(element => <p>{element.ID}</p>)
                   ) : (
-                    <p>{error}</p>
-                  )}
+                      <p>{error}</p>
+                    )}
                 </td>
                 <td className="table-field">
                   {entries ? (
@@ -63,22 +64,22 @@ class Bodies extends PureComponent {
                       </p>
                     ))
                   ) : (
-                    <p>{error}</p>
-                  )}
+                      <p>{error}</p>
+                    )}
                 </td>
                 <td className="table-field">
                   {entries ? (
                     entries.map(element => <p>{element.temperature} &#8451;</p>)
                   ) : (
-                    <p>{error}</p>
-                  )}
+                      <p>{error}</p>
+                    )}
                 </td>
                 <td className="table-field">
                   {entries ? (
                     entries.map(element => <p>{element.air_humidity}%</p>)
                   ) : (
-                    <p>{error}</p>
-                  )}
+                      <p>{error}</p>
+                    )}
                 </td>
                 <td className="table-field">
                    {entries ? (
@@ -110,6 +111,10 @@ class Bodies extends PureComponent {
               </tr>
             </thead>
           </table>
+          <div className="charts">
+            <Temperature value={entries ? (entries.slice(-1)[0].temperature) : "null"} />
+            <Humidity value={entries ? (entries.slice(-1)[0].air_humidity) : "null"} />
+          </div>
         </div>
       </React.Fragment>
     );
