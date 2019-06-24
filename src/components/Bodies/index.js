@@ -4,11 +4,17 @@ import { fetch_data } from "../../actions";
 import "bootstrap/dist/css/bootstrap.css";
 import { Temperature, Humidity } from 'react-environment-chart';
 import "./style.scss";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class Bodies extends PureComponent {
+  componentDidMount(){
+    
+  }
   render() {
+  
     const { fetch_data, entries, loading, error } = this.props;
     if (loading) {
+      console.log("Entry: " + entries);
       return "Loading...";
     }
     return (
@@ -86,11 +92,22 @@ class Bodies extends PureComponent {
                
                 <td className="table-field">
                   {entries ? (
-                    entries.map(element => <p><button className="more-btn">WIĘCEJ</button></p>)
-                  ) : (
+                    entries.map(element => 
+                    <Link to={{
+                      pathname: `/additional/${element.ID}`,
+                      state: {element: element,
+                        soilMousture: element.soil_moisture}
+                    }}>
+                    <p>
+                      <button className="more-btn">WIĘCEJ</button>
+                    </p>
+                    </Link>
+                    )
+                 ) : (
                     <p>{error}</p>
                   )}
                 </td>
+             
               </tr>
             </thead>
           </table>
@@ -103,6 +120,8 @@ class Bodies extends PureComponent {
     );
   }
 }
+
+
 
 const mapStateToProps = state => {
   return {
