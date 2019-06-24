@@ -6,7 +6,11 @@ import "./style.scss";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class Bodies extends PureComponent {
+  componentDidMount(){
+    
+  }
   render() {
+  
     const { fetch_data, entries, loading, error } = this.props;
     if (loading) {
       console.log("Entry: " + entries);
@@ -89,8 +93,9 @@ class Bodies extends PureComponent {
                   {entries ? (
                     entries.map(element => 
                     <Link to={{
-                      pathname: `/addtitional/${element.ID}`,
-                      state: {entries: element}
+                      pathname: `/additional/${element.ID}`,
+                      state: {element: element,
+                        soilMousture: element.soil_moisture}
                     }}>
                     <p>
                       <button className="more-btn">WIĘCEJ</button>
